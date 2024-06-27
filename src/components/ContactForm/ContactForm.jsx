@@ -1,11 +1,13 @@
-/* eslint-disable react/prop-types */
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
-const ContactForm = ({ addContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const handleSubmit = (values, { resetForm }) => {
-    addContact(values.name, values.number);
+    dispatch(addContact(values.name, values.number));
     resetForm();
   };
 
